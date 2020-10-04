@@ -22,9 +22,6 @@ extern "C"
 {
 #endif
 
-
-#define LOG_TAG "VPU_LIB"
-
 #include <mvnc.h>
 
 /*

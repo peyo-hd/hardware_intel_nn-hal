@@ -1566,12 +1566,14 @@ void VpuPreparedModel::deinitialize()
     VLOG(MODEL) << "deinitialize";
     int val;
     val = ncs_unload_graph();
-    if (val != 0)
-    VLOG(MODEL) << "unable to unload graph from NCS";
+    if (val != 0) {
+        VLOG(MODEL) << "unable to unload graph from NCS";
+    }
 
     val = ncs_deinit();
-    if (val != 0)
-    VLOG(MODEL) << "unable to deinitialize NCS device";
+    if (val != 0) {
+        VLOG(MODEL) << "unable to deinitialize NCS device";
+    }
 }
 
 void VpuPreparedModel::asyncExecute(const Request& request,

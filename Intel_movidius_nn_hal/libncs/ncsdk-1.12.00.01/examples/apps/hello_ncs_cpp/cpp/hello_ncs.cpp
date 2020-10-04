@@ -25,7 +25,7 @@
 #define NAME_SIZE 100
 
 
-int main(int argc, char** argv)
+int main()
 {
     mvncStatus retCode;
     void *deviceHandle;

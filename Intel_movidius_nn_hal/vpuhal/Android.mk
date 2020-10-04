@@ -33,12 +33,14 @@ LOCAL_C_INCLUDES += \
   $(LOCAL_PATH)/../libncs/ncsdk-1.12.00.01/api/include \
   $(LOCAL_PATH)/../ncs_lib_operations \
 	$(LOCAL_PATH)/../graph_compiler_NCS \
-	frameworks/ml/nn/runtime/include
+	frameworks/ml/nn/runtime/include \
+	frameworks/native/libs/nativewindow/include \
+	frameworks/native/libs/arect/include
 
 
 #TODO update the CFLAGS
 
-LOCAL_CFLAGS += -fexceptions
+LOCAL_CFLAGS += -fexceptions -Wno-macro-redefined -Wno-unused-parameter -Wno-unused-variable -Wno-switch -Wno-sign-compare
 
 LOCAL_SHARED_LIBRARIES := \
                     libhidlbase \
@@ -71,7 +73,9 @@ LOCAL_C_INCLUDES += \
   $(LOCAL_PATH)/include \
   $(LOCAL_PATH)/../ncsdk/include \
   $(LOCAL_PATH)/../ncs_lib_operations \
-	frameworks/ml/nn/runtime/include
+	frameworks/ml/nn/runtime/include \
+	frameworks/native/libs/nativewindow/include \
+	frameworks/native/libs/arect/include
 
 LOCAL_CFLAGS += -fexceptions
 

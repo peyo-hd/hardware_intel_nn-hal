@@ -33,8 +33,9 @@ LOCAL_C_INCLUDES += $(LOCAL_PATH) \
 										$(LOCAL_PATH)/../ncs_lib_operations
 
 LOCAL_SHARED_LIBRARIES := libncsdk libncs_nn_operation liblog libutils
-LOCAL_CPPFLAGS := -fexceptions
+LOCAL_CPPFLAGS := -fexceptions -Wno-macro-redefined -Wno-unused-parameter -Wno-format -Wno-unused-variable -Wno-unused-value -Wno-sign-compare
 LOCAL_MODULE := libncs_graph_compiler
+LOCAL_VENDOR_MODULE := true
 
 
 include $(BUILD_SHARED_LIBRARY)

@@ -13,11 +13,13 @@ LOCAL_C_INCLUDES += \
 	$(LOCAL_PATH)/ncsdk-1.12.00.01/api/src \
 	$(LOCAL_PATH)/ncsdk-1.12.00.01/api/include \
 	external/libusb/libusb
-LOCAL_CFLAGS += -O2 -Wall -pthread -fPIC -MMD -MP
+LOCAL_CFLAGS += -O2 -Wall -pthread -fPIC -MMD -MP -Wno-sign-compare
 
 LOCAL_SHARED_LIBRARIES := libusb
 
 LOCAL_MODULE := libncsdk
+
+LOCAL_VENDOR_MODULE := true
 
 include $(BUILD_SHARED_LIBRARY)
 
@@ -39,6 +41,7 @@ include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
 LOCAL_MODULE := ncs_test1_app
+LOCAL_VENDOR_MODULE := true
 LOCAL_SRC_FILES := ncsdk-1.12.00.01/examples/apps/hello_ncs_cpp/cpp/hello_ncs.cpp
 
 LOCAL_C_INCLUDES +=  \

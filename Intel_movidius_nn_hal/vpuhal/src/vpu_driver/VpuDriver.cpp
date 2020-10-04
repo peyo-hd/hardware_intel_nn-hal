@@ -132,9 +132,9 @@ Return<DeviceStatus> VpuDriver::getStatus() {
   int status;
   ALOGD("VpuDriver getStatus()");
   status = ncs_init();
-  if (!status){
+  if (status != 0){
+	ALOGE("VPU Device Unavilable");
     return DeviceStatus::OFFLINE;
-    ALOGE("VPU Device Unavilable");
   }else{
     ALOGD("VPU Device avilable");
     return DeviceStatus::AVAILABLE;

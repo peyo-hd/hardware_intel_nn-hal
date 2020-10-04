@@ -2001,7 +2001,7 @@ bool write_kernel_bias_data_buffer_to_file(Operation_inputs_info curr_stage_info
 
     if(op_params_buffer == NULL)
     ALOGE("unable to allocate bias_data_buffer exit");
-    if(curr_stage_info.beta == NULL)
+    if(curr_stage_info.beta == 0.0)
     ALOGE(" curr_stage_info.beta is null ");
     float Beta = curr_stage_info.beta;
     memset(op_params_buffer,0,op_params_size_align);
@@ -2070,8 +2070,8 @@ uint32_t estimate_file_size(bool with_buf_size,uint32_t stage_count){
 
   if(with_buf_size){
     filesize+= calculate_data_buffer_size(); //TODO calculate how to find databuf size
-  }else
-  filesize = filesize;
+  }
+
   return filesize;
 }
 

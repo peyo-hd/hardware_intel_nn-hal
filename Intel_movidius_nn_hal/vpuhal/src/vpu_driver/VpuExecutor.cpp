@@ -126,6 +126,7 @@ bool setRunTimePoolInfosFromHidlMemories(std::vector<RunTimePoolInfo>* poolInfos
 }
 
 
+#if 0
 // Updates the RunTimeOperandInfo with the newly calculated shape.
 // Allocate the buffer if we need to.
 static bool setInfoAndAllocateIfNeeded(RunTimeOperandInfo* info, const Shape& shape) {
@@ -156,7 +157,7 @@ static bool setInfoAndAllocateIfNeeded(RunTimeOperandInfo* info, const Shape& sh
     }
     return true;
 }
-
+#endif
 
 // Ignore the .pools entry in model and request.  This will have been taken care of
 // by the caller.

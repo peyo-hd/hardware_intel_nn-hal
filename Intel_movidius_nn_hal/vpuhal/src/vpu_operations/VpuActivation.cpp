@@ -69,7 +69,7 @@ namespace vpu_driver {
         *outputData = std::min((uint8_t)output_activation_max,          \
                 std::max((uint8_t)output_activation_min, *inputData));  \
     }
-
+*/
 
 /*bool reluQuant8(const uint8_t* inputData, const Shape& inputShape,
                 uint8_t* outputData, const Shape& outputShape) {

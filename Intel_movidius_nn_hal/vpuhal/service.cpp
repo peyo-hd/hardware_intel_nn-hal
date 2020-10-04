@@ -33,7 +33,7 @@ using android::hardware::neuralnetworks::V1_0::vpu_driver::VpuDriver;
 int main() {
      android::sp<VpuDriver> vpu = new VpuDriver();
      configureRpcThreadpool(4, true);
-     android::status_t status = vpu->registerAsService("vpudriver");
+     android::status_t status = vpu->registerAsService("default");
      if (status == android::OK) {
              ALOGI("VPU HAL Ready.");
              joinRpcThreadpool();

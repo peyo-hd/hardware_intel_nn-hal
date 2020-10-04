@@ -17,6 +17,7 @@
 #include <stdlib.h>
 #include <iostream>
 #include <mvnc.h>
+#define LOG_TAG "VPU_LIB"
 #include <log/log.h>
 #include "fp.h"
 #include "ncs_lib.h"
@@ -110,8 +111,7 @@ int ncs_init(){
 int ncs_load_graph(){
 
   if(!graph_load){
-    char *path;
-    path="/data/ncs_graph";
+    const char *path="/data/ncs_graph";
     graphFileBuf = LoadgraphFile(path, &graphFileLen);
 
     // allocate the graph
@@ -161,6 +161,10 @@ mvncStatus ncs_rungraph(float *input_data, uint32_t input_num_of_elements,
 
                       if (retCode != MVNC_OK){
                         ALOGE("NCS could not return result %d",retCode);
+                        if (retCode == MVNC_MYRIAD_ERROR ) {
+                        	mvncGetGraphOption(graphHandle, MVNC_DEBUG_INFO, &resultData16, &lenResultData);
+                        	ALOGE("MVNC_DEBUG_INFO length %d : %s", lenResultData, (char *)resultData16);
+                        }
                         return retCode;
                       }
                       ALOGD("Got the Result");

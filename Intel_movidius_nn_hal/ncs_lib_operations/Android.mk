@@ -25,6 +25,6 @@ LOCAL_C_INCLUDES += $(LOCAL_PATH)/../libncs/ncsdk-1.12.00.01/api/include \
 LOCAL_SHARED_LIBRARIES := libncsdk liblog libutils
 LOCAL_CPPFLAGS := -fexceptions -o3
 LOCAL_MODULE := libncs_nn_operation
-
+LOCAL_VENDOR_MODULE := true
 
 include $(BUILD_SHARED_LIBRARY)
