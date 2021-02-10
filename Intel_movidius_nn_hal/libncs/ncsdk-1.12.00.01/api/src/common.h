@@ -15,17 +15,17 @@
 * Any license under such intellectual property rights must be express and
 * approved by Intel in writing.
 */
-
+#include <log/log.h>
 // Common logging macros
-#define PRINT_DEBUG(...)  {if (mvnc_loglevel > 1) fprintf(__VA_ARGS__);}
-#define PRINT_DEBUG_F(...)  {if (mvnc_loglevel > 1) \
-                                { fprintf(__VA_ARGS__); fflush(stderr); } }\
+#define PRINT_DEBUG(fd, ...)  {ALOGD(__VA_ARGS__);}
+#define PRINT_DEBUG_F(fd, ...)  {\
+                                { ALOGD(__VA_ARGS__); } }\
 
-#define PRINT_INFO(...)   {if (mvnc_loglevel > 0) fprintf(__VA_ARGS__);}
-#define PRINT_INFO_F(...)  {if (mvnc_loglevel > 0) \
-                                { fprintf(__VA_ARGS__); fflush(stderr); } }\
+#define PRINT_INFO(fd, ...)   {ALOGI(__VA_ARGS__);}
+#define PRINT_INFO_F(fd, ...)  { \
+                                { ALOGI(__VA_ARGS__);} }\
 
-#define PRINT(...) fprintf(stderr,__VA_ARGS__)
+#define PRINT(...) ALOGD(__VA_ARGS__)
 
 // Common defines
 #define DEFAULT_VID				0x03E7

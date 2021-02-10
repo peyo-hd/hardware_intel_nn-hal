@@ -15,7 +15,7 @@ LOCAL_C_INCLUDES += \
 	external/libusb/libusb
 LOCAL_CFLAGS += -O2 -Wall -pthread -fPIC -MMD -MP -Wno-sign-compare
 
-LOCAL_SHARED_LIBRARIES := libusb
+LOCAL_SHARED_LIBRARIES := libusb liblog 
 
 LOCAL_MODULE := libncsdk
 
