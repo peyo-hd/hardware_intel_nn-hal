@@ -2285,7 +2285,8 @@ char* generate_graph(char* graph_buf, Blobconfig blob_config, Myriadconfig mconf
 bool delete_graphs(){
   int size = graph_file_names_vector.size();
   int perror;
-  for(int i=0;i<size;i++){
+  for(int i=0;i<size;){
+    i++;
     perror = std::remove(graph_file_names_vector.at(i).c_str());
     if(perror==0)
     return true;
