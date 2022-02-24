@@ -20,6 +20,8 @@
 #include "VpuExecutor.h"
 #include <log/log.h>
 #include "Blob.h"
+#undef LOG_TAG
+#define LOG_TAG "VpuExecutor"
 #include <stdio.h>
 #include "ncs_lib.h"
 
@@ -165,8 +167,8 @@ int VpuExecutor::run(const Model& model, const Request& request,
                      const std::vector<RunTimePoolInfo>& modelPoolInfos,
                      const std::vector<RunTimePoolInfo>& requestPoolInfos) {
     VLOG(VPUEXE) << "VpuExecutor::run()";
-    VLOG(VPUEXE) << "model: " << toString(model);
-    VLOG(VPUEXE) << "request: " << toString(request);
+    //VLOG(VPUEXE) << "model: " << toString(model);
+    //VLOG(VPUEXE) << "request: " << toString(request);
 
     mModel = &model;
     mRequest = &request; // TODO check if mRequest is needed
@@ -203,7 +205,7 @@ int VpuExecutor::run(const Model& model, const Request& request,
 
     VLOG(VPUEXE) << "Output Num of Elements: " << output_num_elements;
 
-    VLOG(VPUEXE) << "Got the input data request Starting to execute on VPU!";
+    //VLOG(VPUEXE) << "Got the input data request Starting to execute on VPU!";
 
     int val = ncs_execute((float*)network_input_buffer,input_num_elements,network_output_buffer, output_num_elements);
 
@@ -230,7 +232,7 @@ int VpuExecutor::run(const Model& model, const Request& request,
 
     mModel = nullptr;
     mRequest = nullptr;
-    VLOG(VPUEXE) << "Completed run normally";
+    //VLOG(VPUEXE) << "Completed run normally";
 
     return ANEURALNETWORKS_NO_ERROR;
 }
@@ -238,7 +240,7 @@ int VpuExecutor::run(const Model& model, const Request& request,
 
 bool VpuExecutor::initializeRunTimeInfo(const std::vector<RunTimePoolInfo>& modelPoolInfos,
                                         const std::vector<RunTimePoolInfo>& requestPoolInfos) {
-    VLOG(VPUEXE) << "VpuExecutor::initializeRunTimeInfo";
+    //VLOG(VPUEXE) << "VpuExecutor::initializeRunTimeInfo";
     const size_t count = mModel->operands.size();
     mOperands.resize(count);
 

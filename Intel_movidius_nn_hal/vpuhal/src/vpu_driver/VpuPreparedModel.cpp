@@ -1538,7 +1538,7 @@ bool VpuPreparedModel::validModel(const Model& model)
 Return<ErrorStatus> VpuPreparedModel::execute(const Request& request,
                                                  const sp<IExecutionCallback>& callback) {
 
-        ALOGD("Begin to execute on VPU");
+        ALOGV("Begin to execute on VPU");
 
 
 
@@ -1556,7 +1556,7 @@ Return<ErrorStatus> VpuPreparedModel::execute(const Request& request,
         // is expected to live forever.
         std::thread([this, request, callback]{ asyncExecute(request, callback); }).detach();
 
-        ALOGD("Start execute thread done on VPU");
+        ALOGV("Start execute thread done on VPU");
         return ErrorStatus::NONE;
 
 }

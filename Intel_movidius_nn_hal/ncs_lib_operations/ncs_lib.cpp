@@ -145,9 +145,9 @@ mvncStatus ncs_rungraph(float *input_data, uint32_t input_num_of_elements,
 
                       //allocate fp16 input1 with inpu1 shape
                       ip1_fp16 = (half*) malloc(sizeof(*ip1_fp16) * input_num_of_elements);
-                      ALOGD("Converting input from Float to FP16 Begin");
+                      ALOGV("Converting input from Float to FP16 Begin");
                       floattofp16((unsigned char *)ip1_fp16, input_data_buffer, input_num_of_elements);
-                      ALOGD("Converting input from Float to FP16 end");
+                      ALOGV("Converting input from Float to FP16 end");
                       lenip1_fp16 = input_num_of_elements * sizeof(*ip1_fp16);
 
                       // start the inference with mvncLoadTensor()
@@ -156,7 +156,7 @@ mvncStatus ncs_rungraph(float *input_data, uint32_t input_num_of_elements,
                         ALOGE("Could not LoadTensor into NCS: %d",retCode);
                         return retCode;
                       }
-                      ALOGD("Input Tensor Loaded successfully!");
+                      ALOGV("Input Tensor Loaded successfully!");
                       retCode = mvncGetResult(graphHandle, &resultData16, &lenResultData, &userParam);
 
                       if (retCode != MVNC_OK){
@@ -167,7 +167,7 @@ mvncStatus ncs_rungraph(float *input_data, uint32_t input_num_of_elements,
                         }
                         return retCode;
                       }
-                      ALOGD("Got the Result");
+                      ALOGV("Got the Result");
 
                       float *output_data_buffer = (float *)malloc(output_num_of_elements*sizeof(float));
                       if(output_data_buffer==NULL){
@@ -176,16 +176,16 @@ mvncStatus ncs_rungraph(float *input_data, uint32_t input_num_of_elements,
                       }
 
                       memset(output_data_buffer,0,output_num_of_elements*sizeof(float));
-                      ALOGD("Converting output from FP16 to Float Begin");
+                      ALOGV("Converting output from FP16 to Float Begin");
                       fp16tofloat(output_data_buffer, (unsigned char*)resultData16, output_num_of_elements);
-                      ALOGD("Converting output from FP16 to Float end");
+                      ALOGV("Converting output from FP16 to Float end");
                       memcpy(output_data,output_data_buffer,output_num_of_elements*sizeof(float));
-                      ALOGD("Output data is copied");
+                      ALOGV("Output data is copied");
 
                       free(input_data_buffer);
                       free(output_data_buffer);
                       free(ip1_fp16);
-                      ALOGD("Error code end of the rungraph is : %d",retCode);
+                      ALOGV("Error code end of the rungraph is : %d",retCode);
 
                       return retCode;
                     }
