@@ -270,7 +270,7 @@ bool display(Operation_inputs_info cur_stage_android, int count){
   ALOGD("cur_stage_android.input_shape : (%d, %d, %d, %d)",cur_stage_android.input_shape[0],cur_stage_android.input_shape[1],cur_stage_android.input_shape[2],cur_stage_android.input_shape[3]);
 
   //if(cur_stage_android.main_operation == CONV_2D || cur_stage_android.main_operation ==  DEPTHWISE_CONV_2D || cur_stage_android.main_operation == AVERAGE_POOL_2D || cur_stage_android.main_operation == MAX_POOL_2D){
-  if(cur_stage_android.main_operation == CONV_2D || DEPTHWISE_CONV_2D ){
+  if(cur_stage_android.main_operation == CONV_2D || cur_stage_android.main_operation ==  DEPTHWISE_CONV_2D){
     ALOGD("cur_stage_android.kernel_shape : (%d, %d, %d, %d) ",cur_stage_android.kernel_shape[0],cur_stage_android.kernel_shape[1],cur_stage_android.kernel_shape[2],cur_stage_android.kernel_shape[3]);
 
     uint32_t num_of_kernel_elements = cur_stage_android.kernel_shape[0] * cur_stage_android.kernel_shape[1] *
